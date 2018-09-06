@@ -1,3 +1,7 @@
+[[constraint]]
+  name = "github.com/lightningnetwork/lnd"
+  source = "https://github.com/ChluNetwork/lnd.git"
+
 [[override]]
   name = "github.com/aead/siphash"
   revision = "83563a290f60225eb120d724600b9690c3fb536f"
@@ -8,7 +12,8 @@
 
 [[constraint]]
   name = "github.com/coreos/bbolt"
-  revision = "4f5275f4ebbf6fe7cb772de987fa96ee674460a7"
+  source = "https://github.com/caffeinum/bbolt.git"
+  # revision = "be10fb074325032a82cf154d3eee3d941772999b"
 
 [[constraint]]
   name = "github.com/davecgh/go-spew"
@@ -32,7 +37,8 @@
 
 [[constraint]]
   name = "github.com/jessevdk/go-flags"
-  revision = "f88afde2fa19a30cf50ba4b05b3d13bc6bae3079"
+  source = "https://github.com/caffeinum/go-flags.git"
+  # revision = "3c05f57c8f9ee166d659d7e58ccdff56c2f5b2c5"
 
 [[constraint]]
   name = "github.com/jrick/logrotate"
@@ -72,7 +78,8 @@
 
 [[constraint]]
   name = "github.com/btcsuite/btcwallet"
-  revision = "8ae4afc70174bacc745e8dd89fc6db2d817909bd"
+  source = "https://github.com/caffeinum/btcwallet.git"
+  # revision = "45f36f917402fc77904cee9171bbb9a7cd738b5e"
 
 [[constraint]]
   name = "github.com/tv42/zbase32"
