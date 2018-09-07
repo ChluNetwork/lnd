@@ -1,7 +1,34 @@
 <html>
   <head>
-    <title>Testing WebAssembly</title>
+    <title>LND WebAssembly</title>
     <script src="wasm_exec.js"></script>
+    <script src="browserfs.js"></script>
+    <script type="text/javascript">
+      // Installs globals onto window:
+      // * Buffer
+      // * require (monkey-patches if already defined)
+      // * process
+      // You can pass in an arbitrary object if you do not wish to pollute
+      // the global namespace.
+      function setupBFS() {
+        return new Promise(resolve => {
+          var scope = {}
+          BrowserFS.install(scope);
+          // Configures BrowserFS to use the LocalStorage file system.
+          BrowserFS.configure({
+            fs: "LocalStorage"
+          }, function(e) {
+            if (e) {
+              // An error happened!
+              throw e;
+            }
+            // Otherwise, BrowserFS is ready-to-use!
+
+            resolve(scope.require('fs'));
+          });
+        })
+      }
+    </script>
     <script type="text/javascript">
     function fetchAndInstantiate(url, importObject) {
       return fetch(url).then(response =>
@@ -14,17 +41,41 @@
     }
     var go = new Go();
     var mod = fetchAndInstantiate("/lnd.wasm", go.importObject);
-    window.onload = function() {
+    window.onload = async function() {
+      const fs = await setupBFS()
+
+      const { writeSync, openSync, constants } = window.fs
+
+      // window.fs contains pre-setup fs, e.g. for console.log
+      // fs is a BrowserFS full emulator based on localStorage
+      window.fs = {
+        constants,
+        ...fs,
+        openSync (path, flags, mode) {
+          console.log(`call openSync ${path}`, flags, mode)
+          const fd = fs.openSync(path, flags || 'a+', mode)
+          console.log('fd', fd)
+          return fd
+        },
+        writeSync (fd, buf, ...args) {
+          if (fd <= 2) {
+            // stdin, stdout goes to console.log
+            // this function is inherited from wasm_exec.js
+            return writeSync(fd, buf)
+          } else {
+            return fs.writeSync(fd, buf, ...args)
+          }
+        },
+      };
+
       mod.then(function(instance) {
         go.run(instance);
-      });
+      })
+
     };
     </script>
-    <style>
-    #canvas { width: 500px; height: 300px; }
-    </style>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <h1>Hello LND!</h1>
   </body>
 </html>

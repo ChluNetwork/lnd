@@ -48,6 +48,7 @@
 				return buf.length;
 			},
 			openSync(path, flags, mode) {
+				console.log(`call openSync ${path}`, flags, mode)
 				const err = new Error("not implemented");
 				err.code = "ENOSYS";
 				throw err;
@@ -235,7 +236,33 @@
 
 					// func valueGet(v ref, p string) ref
 					"syscall/js.valueGet": (sp) => {
-						storeValue(sp + 32, Reflect.get(loadValue(sp + 8), loadString(sp + 16)));
+						let obj = loadValue(sp + 8)
+						let key = loadString(sp + 16)
+
+						console.log('obj', obj)
+						console.log('key', key)
+
+						// HACK !!!
+						if ('atimeMs' == key) {
+							obj[key] = obj['atime'].getTime ? obj['atime'].getTime() : obj['atime']
+						}
+
+						if ('mtimeMs' == key) {
+							obj[key] = obj['mtime'].getTime ? obj['mtime'].getTime() : obj['mtime']
+						}
+
+						if ('ctimeMs' == key) {
+							obj[key] = obj['ctime'].getTime ? obj['ctime'].getTime() : obj['ctime']
+						}
+
+						try {
+							const value = Reflect.get(obj, key)
+							storeValue(sp + 32, value)
+							console.log('value', value)
+						} catch (err) {
+							console.error(err)
+						}
+
 					},
 
 					// func valueSet(v ref, p string, x ref)

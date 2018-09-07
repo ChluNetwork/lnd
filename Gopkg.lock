@@ -106,7 +106,8 @@
   revision = "ab6388e0c60ae4834a1f57511e20c17b5f78be4b"
 
 [[projects]]
-  digest = "1:989454089255d33be696e7ae9d201d436c91a3d17856c7a84e7e02a64da61b91"
+  branch = "master"
+  digest = "1:360ae77bdaeacd6d5bcd256ee34724a3217f7ad71c8a7bc6f1e89256fa4a782f"
   name = "github.com/btcsuite/btcwallet"
   packages = [
     "chain",
@@ -126,7 +127,8 @@
     "wtxmgr",
   ]
   pruneopts = "UT"
-  revision = "8ae4afc70174bacc745e8dd89fc6db2d817909bd"
+  revision = "45f36f917402fc77904cee9171bbb9a7cd738b5e"
+  source = "https://github.com/caffeinum/btcwallet.git"
 
 [[projects]]
   branch = "master"
@@ -168,11 +170,12 @@
   revision = "31079b6807923eb23992c421b114992b95131b55"
 
 [[projects]]
-  digest = "1:e802928326e2d631840a238c372417c3ade751b79ff491c5f0a4755c912643cd"
+  digest = "1:85c493d402f164ebe7e753a1d0bc59eb0c7617cf8fecca4caa50ec4db57b263b"
   name = "github.com/coreos/bbolt"
   packages = ["."]
   pruneopts = "UT"
-  revision = "4f5275f4ebbf6fe7cb772de987fa96ee674460a7"
+  revision = "d665043cfd3786bb35ebbd429fdebeadd97eee0b"
+  source = "https://github.com/caffeinum/bbolt.git"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
@@ -228,11 +231,12 @@
   revision = "28a68d0c24adce1da43f8df6a57340909ecd7fdd"
 
 [[projects]]
-  digest = "1:580a0575cc73027105fcac15aa61aeef0bc15760a7718bd1d3e0c9f2660be559"
+  digest = "1:ec787bffea3ea7eb02daed3d679592e8a09d1302ab66231524dd2dd59b202a26"
   name = "github.com/jessevdk/go-flags"
   packages = ["."]
   pruneopts = "UT"
-  revision = "f88afde2fa19a30cf50ba4b05b3d13bc6bae3079"
+  revision = "3c05f57c8f9ee166d659d7e58ccdff56c2f5b2c5"
+  source = "https://github.com/caffeinum/go-flags.git"
 
 [[projects]]
   digest = "1:4b6a85c651ea3faa6dfb4e6de5249b602226270b9eb3dfb8f49ec91fa3ef08ff"
@@ -284,6 +288,48 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "ac4d9da8f1d67c95f1fafdc65e1a4902d6f5a940"
+
+[[projects]]
+  branch = "master"
+  digest = "1:8ef785bec8271e85e4109de80100f0547ca42e0af03d2b7449f6432eb3b45caa"
+  name = "github.com/lightningnetwork/lnd"
+  packages = [
+    "aezeed",
+    "autopilot",
+    "brontide",
+    "chainntnfs",
+    "chainntnfs/bitcoindnotify",
+    "chainntnfs/btcdnotify",
+    "chainntnfs/neutrinonotify",
+    "channeldb",
+    "contractcourt",
+    "discovery",
+    "htlcswitch",
+    "htlcswitch/hodl",
+    "keychain",
+    "lncfg",
+    "lnpeer",
+    "lnrpc",
+    "lntest",
+    "lnwallet",
+    "lnwallet/btcwallet",
+    "lnwire",
+    "macaroons",
+    "multimutex",
+    "nat",
+    "routing",
+    "routing/chainview",
+    "shachain",
+    "signal",
+    "ticker",
+    "tor",
+    "walletunlocker",
+    "watchtower/blob",
+    "zpay32",
+  ]
+  pruneopts = "UT"
+  revision = "d7895a810f5e81cc02e5b1b70df0a6b95e8642e7"
+  source = "https://github.com/ChluNetwork/lnd.git"
 
 [[projects]]
   digest = "1:3402f61a37575d808e4499dbfda1ab756d570c66cdfed492b84a936bbb909533"
@@ -519,6 +565,38 @@
     "github.com/kkdai/bstream",
     "github.com/lightninglabs/neutrino",
     "github.com/lightningnetwork/lightning-onion",
+    "github.com/lightningnetwork/lnd/aezeed",
+    "github.com/lightningnetwork/lnd/autopilot",
+    "github.com/lightningnetwork/lnd/brontide",
+    "github.com/lightningnetwork/lnd/chainntnfs",
+    "github.com/lightningnetwork/lnd/chainntnfs/bitcoindnotify",
+    "github.com/lightningnetwork/lnd/chainntnfs/btcdnotify",
+    "github.com/lightningnetwork/lnd/chainntnfs/neutrinonotify",
+    "github.com/lightningnetwork/lnd/channeldb",
+    "github.com/lightningnetwork/lnd/contractcourt",
+    "github.com/lightningnetwork/lnd/discovery",
+    "github.com/lightningnetwork/lnd/htlcswitch",
+    "github.com/lightningnetwork/lnd/htlcswitch/hodl",
+    "github.com/lightningnetwork/lnd/keychain",
+    "github.com/lightningnetwork/lnd/lncfg",
+    "github.com/lightningnetwork/lnd/lnpeer",
+    "github.com/lightningnetwork/lnd/lnrpc",
+    "github.com/lightningnetwork/lnd/lntest",
+    "github.com/lightningnetwork/lnd/lnwallet",
+    "github.com/lightningnetwork/lnd/lnwallet/btcwallet",
+    "github.com/lightningnetwork/lnd/lnwire",
+    "github.com/lightningnetwork/lnd/macaroons",
+    "github.com/lightningnetwork/lnd/multimutex",
+    "github.com/lightningnetwork/lnd/nat",
+    "github.com/lightningnetwork/lnd/routing",
+    "github.com/lightningnetwork/lnd/routing/chainview",
+    "github.com/lightningnetwork/lnd/shachain",
+    "github.com/lightningnetwork/lnd/signal",
+    "github.com/lightningnetwork/lnd/ticker",
+    "github.com/lightningnetwork/lnd/tor",
+    "github.com/lightningnetwork/lnd/walletunlocker",
+    "github.com/lightningnetwork/lnd/watchtower/blob",
+    "github.com/lightningnetwork/lnd/zpay32",
     "github.com/ltcsuite/ltcd/chaincfg",
     "github.com/ltcsuite/ltcd/wire",
     "github.com/miekg/dns",

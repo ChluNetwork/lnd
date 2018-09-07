@@ -13,7 +13,7 @@
 [[constraint]]
   name = "github.com/coreos/bbolt"
   source = "https://github.com/caffeinum/bbolt.git"
-  # revision = "be10fb074325032a82cf154d3eee3d941772999b"
+  revision = "d665043cfd3786bb35ebbd429fdebeadd97eee0b"
 
 [[constraint]]
   name = "github.com/davecgh/go-spew"
